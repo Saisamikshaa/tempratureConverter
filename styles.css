@@ -1,0 +1,81 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Importing Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #1e1e1e; /* Darker container background */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border: 2px solid #ff4081; /* Accent border color */
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ff4081; /* Accent color for heading */
+    font-weight: 700; /* Bold heading */
+}
+
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #333;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Input and select box colors */
+input, select {
+    background: #333; /* Dark background for input/select */
+    color: #ffffff; /* Light text color */
+}
+
+/* Button colors */
+button {
+    background: #ff4081; /* Accent button background color */
+    color: #ffffff; /* Button text color */
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: 700; /* Bold button text */
+}
+
+button:hover {
+    background: #d81b60; /* Darker accent color on hover */
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 400; /* Normal weight for result text */
+    color: #ffffff; /* Light result text color */
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+}

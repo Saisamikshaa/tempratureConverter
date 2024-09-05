@@ -1,61 +1,49 @@
-// celsius
-// fahrenheit
-// kelvin
-
-// kelvin to celsius
-// Celsius = Kelvin - 273.15
-
-// kelvin to fahrenheit
-// Fahenheit = (Kelvin − 273.15) × 9/5 + 32
-const kelvinConverter = (temprature) => {
-  let celsius = (temprature - 273.15);
-  let fahrenheit = ((temprature - 273.15) * 1.8 + 32);
-  let celsius1 = celsius.toFixed(2);
-  let fahrenheit1 = fahrenheit.toFixed(2);
-
-  return { celsiusTemp: celsius1, fahrenheitTemp: fahrenheit1 };
+// Kelvin to Celsius and Fahrenheit
+const kelvinConverter = (temperature) => {
+  let celsius = temperature - 273.15;
+  let fahrenheit = (temperature - 273.15) * 1.8 + 32;
+  return { celsiusTemp: celsius.toFixed(2), fahrenheitTemp: fahrenheit.toFixed(2) };
 };
-let abc = kelvinConverter(123);
-console.log(abc);
 
-//  {celsuisTemp : celsius, fahrenheitTemp : fahrenheit };
-// abc?.celsiusTemp
-// abc?.fahrenheitTemp
-
-// celsius to fahrenheit
-// Fahrenheit = (9/5 × Celsius) + 32.
-
-// celsius to kelvin
-// T (Kelvin) = T (celsius) + 273.15.
-const celsiusConverter = (temprature) => {
-  let kelvin = (temprature - 273.15);
-  let fahrenheit = (1.8 * temprature + 32).toFixed(2);
-  let kelvin1 = kelvin.toFixed(2);
-  let fahrenheit1 = fahrenheit.toFixed(2);
-
-  return { kelvinTemp: kelvin1, fahrenheitTemp: fahrenheit1 };
+// Celsius to Kelvin and Fahrenheit
+const celsiusConverter = (temperature) => {
+  let kelvin = temperature + 273.15;
+  let fahrenheit = (temperature * 1.8) + 32;
+  return { kelvinTemp: kelvin.toFixed(2), fahrenheitTemp: fahrenheit.toFixed(2) };
 };
-let xyz = celsiusConverter(123);
-console.log(xyz);
-// {kelvinTemp: kelvin, fahrenheitTemp: fahrenheit};
-// xyz?.kelvinTemp;
-// xyz?.fahrenheitTemp;
 
-// fahrenheit to celsius
-// Celsius = (Fahrenheit - 32) × 5/9;
-
-// fahrenheit to kelvin
-// Kelvin = (Fahrenheit − 32) × 5 ⁄ 9 + 273.15
-const fahrenheitConverter = (temprature) => {
-  let kelvin = (temprature - 32) * 1.8 + 273.15;
-  let celsius = (temprature - 32) * 1.8;
-  let kelvin1 = kelvin.toFixed(2);
-  let celsius1 = celsius.toFixed(2);
-  return { kelvinTemp: kelvin1, celsiusTemp: celsius1 };
+// Fahrenheit to Celsius and Kelvin
+const fahrenheitConverter = (temperature) => {
+  let celsius = (temperature - 32) * 5/9;
+  let kelvin = (temperature - 32) * 5/9 + 273.15;
+  return { kelvinTemp: kelvin.toFixed(2), celsiusTemp: celsius.toFixed(2) };
 };
-let efg = fahrenheitConverter(123);
-console.log(efg);
 
-// {kelvinTemp : kelvin , celsiusTemp : celsius};
-// egf?.kelvinTemp
-// efg?.celsiusTemp
+function convertTemperature() {
+  const temperature = parseFloat(document.getElementById('temperatureInput').value);
+  const conversionType = document.getElementById('conversionType').value;
+  let result = '';
+
+  if (isNaN(temperature)) {
+      result = 'Please enter a valid number.';
+  } else {
+      switch (conversionType) {
+          case 'kelvinToCelsius':
+              const kelvinResult = kelvinConverter(temperature);
+              result = `Celsius: ${kelvinResult.celsiusTemp} °C<br>Fahrenheit: ${kelvinResult.fahrenheitTemp} °F`;
+              break;
+          case 'celsiusToKelvin':
+              const celsiusResult = celsiusConverter(temperature);
+              result = `Kelvin: ${celsiusResult.kelvinTemp} K<br>Fahrenheit: ${celsiusResult.fahrenheitTemp} °F`;
+              break;
+          case 'fahrenheitToKelvin':
+              const fahrenheitResult = fahrenheitConverter(temperature);
+              result = `Kelvin: ${fahrenheitResult.kelvinTemp} K<br>Celsius: ${fahrenheitResult.celsiusTemp} °C`;
+              break;
+          default:
+              result = 'Invalid conversion type.';
+      }
+  }
+
+  document.getElementById('result').innerHTML = result;
+}
